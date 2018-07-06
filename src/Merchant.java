@@ -1,6 +1,6 @@
-public class Merchant {
+public class Merchant implements Comparable<Merchant> {
 
-  private final BehaviorModel behaviour;
+  private BehaviorModel behaviour;
   private int balance;
 
   Merchant(BehaviorModel behaviorModel){
@@ -8,6 +8,23 @@ public class Merchant {
     balance = 0;
   }
 
+  Merchant(Merchant copied){
+    balance = copied.balance;
+    switch (copied.behaviour.behaviorName){
+      case "Альтруист": behaviour = new AltruistModel();
+        return;
+      case "Кидала": behaviour = new CheaterModel();
+        return;
+      case "Хитрец": behaviour = new CunningModel();
+        return;
+      case "Непредсказуемый": behaviour = new UnpredictableModel();
+        return;
+      case "Мстительный": behaviour = new RevengefulModel();
+        return;
+      case "Ушлый": behaviour = new CunningModel();
+        return;
+    }
+  }
 
   public BehaviorModel getBehaviour() {
     return behaviour;
@@ -46,6 +63,14 @@ public class Merchant {
 
   public void addProfit(int profit){
     balance += profit;
+  }
+
+  public void setBalance(int balance){
+    this.balance = balance;
+  }
+
+  public int compareTo(Merchant b){
+    return b.getBalance() - this.balance;
   }
 
 }

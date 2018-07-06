@@ -22,4 +22,5 @@ public abstract class BehaviorModel {
     //Домножение на -1 - это инверсия;
     return currentDesicion * -1;
   }
+
 }
