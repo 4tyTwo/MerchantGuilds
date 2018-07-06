@@ -16,7 +16,7 @@ public class QuirkyModel extends BehaviorModel {
     if (currentDealNum < firstDecisions.length)
       decision = firstDecisions[currentDealNum++];
     else
-      decision = newBehaviour.getDecision();
+      return newBehaviour.getDecision(); //Ошибка уже заложена
     if (mistake())
       decision = reverseDesicion(decision);
     return decision;
@@ -29,7 +29,7 @@ public class QuirkyModel extends BehaviorModel {
         gotCheated = true;
     }
     else {
-      if (currentDealNum == firstDecisions.length)
+      if (currentDealNum == firstDecisions.length && newBehaviour == null)
         setNewDecisionModel(); //По завершении 4ой сделки надо выбрать новую модель поведения
       else
         newBehaviour.update(partnerDecision); //После 4ой сделки руководствуется уже новой моделью

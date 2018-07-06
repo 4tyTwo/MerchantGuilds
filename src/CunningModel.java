@@ -22,7 +22,7 @@ public class CunningModel extends BehaviorModel {
   @Override
   public void update(int partnerDecision) {
     //Запоминает выбор последнего партнера
-    if (previousPartnerDecision != 0)
+    if (previousPartnerDecision == 0)
       previousPartnerDecision = partnerDecision;
   }
 }

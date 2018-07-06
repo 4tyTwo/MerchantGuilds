@@ -15,7 +15,7 @@ public abstract class BehaviorModel {
 
   protected boolean mistake(){
     //определяет произойдет ли ошибка при сделке, стандартная вероятность - 5%
-    return (new Random().nextInt(20) == 0) ? true : false;
+    return new Random().nextInt(20) == 0;
   }
 
   protected int reverseDesicion(int currentDesicion){

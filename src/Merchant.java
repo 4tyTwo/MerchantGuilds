@@ -23,6 +23,8 @@ public class Merchant implements Comparable<Merchant> {
         return;
       case "Ушлый": behaviour = new CunningModel();
         return;
+      case "Мое поведение": behaviour = new MyModel();
+        return;
     }
   }
 

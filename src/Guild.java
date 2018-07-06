@@ -6,8 +6,8 @@ public class Guild {
   private static  ArrayList<Merchant> merchants;
 
   public Guild(){
-    merchants = new ArrayList<>(60);
-    for (int i = 0; i < 60; i++){
+    merchants = new ArrayList<>(70);
+    for (int i = 0; i < 70; i++){
       if (i < 10)
         merchants.add(new Merchant(new AltruistModel()));
       if (i >= 10 && i < 20)
@@ -20,6 +20,8 @@ public class Guild {
         merchants.add(new Merchant(new RevengefulModel()));
       if (i >= 50 && i < 60)
         merchants.add(new Merchant(new QuirkyModel()));
+      if (i >= 60 && i < 70)
+        merchants.add(new Merchant(new MyModel()));
     }
     randomizePositioning();
   }
@@ -33,7 +35,7 @@ public class Guild {
 
 
   public void tradeYear(){
-    int tradesPerYear = 5 ;//+ new Random().nextInt(3); //[5,7]
+    int tradesPerYear = 5 + new Random().nextInt(3); //[5,7]
     for (int i = 0; i < tradesPerYear; ++i){
       for (int j = 0; j < merchants.size(); ++j){
         for (int curr = j + 1; curr < merchants.size(); ++curr){
@@ -57,7 +59,7 @@ public class Guild {
       guild.tradeYear();
       System.out.println("Год №" + String.valueOf(i+1));
       guild.printYearResults();
-      guild.reshuffle(12);
+      guild.reshuffle(14);
     }
   }
 
