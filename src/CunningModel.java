@@ -15,7 +15,7 @@ public class CunningModel extends BehaviorModel {
     if (previousPartnerDecision == 0)
         decision = FAIR;
     if (mistake())
-      decision = reverseDesicion(decision);
+      decision = inverseDecision(decision);
     return  decision;
   }
 

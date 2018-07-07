@@ -18,7 +18,7 @@ public class QuirkyModel extends BehaviorModel {
     else
       return newBehaviour.getDecision(); //Ошибка уже заложена
     if (mistake())
-      decision = reverseDesicion(decision);
+      decision = inverseDecision(decision);
     return decision;
   }
 

@@ -12,7 +12,7 @@ public class UnpredictableModel extends BehaviorModel{
     if (new Random().nextBoolean())
       decision = FAIR;
     if (mistake())
-      decision = reverseDesicion(decision);
+      decision = inverseDecision(decision);
     return decision;
   }
 

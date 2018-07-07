@@ -2,8 +2,8 @@ import java.util.Random;
 
 public abstract class BehaviorModel {
   protected String behaviorName;
-  public static int CHEAT = -1;
-  public static int FAIR = 1;
+  public final static int CHEAT = -1;
+  public final static int FAIR = 1;
 
   public final String getBehaviorName() {
     return behaviorName;
@@ -11,16 +11,17 @@ public abstract class BehaviorModel {
 
   public abstract int getDecision();
 
-  public abstract void update(int partnerDecision);//Определяет правильно
+  public abstract void update(int partnerDecision);//Обновляет модель поведения
 
   protected boolean mistake(){
     //определяет произойдет ли ошибка при сделке, стандартная вероятность - 5%
     return new Random().nextInt(20) == 0;
   }
 
-  protected int reverseDesicion(int currentDesicion){
+  protected int inverseDecision(int currentDecision){
+    //Инверсирует рещение в случае ошибок
     //Домножение на -1 - это инверсия;
-    return currentDesicion * -1;
+    return currentDecision * -1;
   }
 
 }

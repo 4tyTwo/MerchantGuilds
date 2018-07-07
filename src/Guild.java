@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Guild {
   private static  ArrayList<Merchant> merchants;
@@ -21,12 +19,13 @@ public class Guild {
       if (i >= 50 && i < 60)
         merchants.add(new Merchant(new QuirkyModel()));
       if (i >= 60 && i < 70)
-        merchants.add(new Merchant(new MyModel()));
+        merchants.add(new Merchant(new StatisticianModel()));
     }
     randomizePositioning();
   }
 
   private void randomizePositioning(){
+    //Производит случайную перестановку всех элементов массива, для чистоты симуляции
     for (int i = 59; i >= 0; --i){
       int j = new Random().nextInt(60);
       Collections.swap(merchants,i,j);
@@ -35,6 +34,7 @@ public class Guild {
 
 
   public void tradeYear(){
+    //Проводит "год" торгов, в рамках которого каждый торговец заключает 5-7 сделок с каждым другим
     int tradesPerYear = 5 + new Random().nextInt(3); //[5,7]
     for (int i = 0; i < tradesPerYear; ++i){
       for (int j = 0; j < merchants.size(); ++j){
@@ -43,10 +43,11 @@ public class Guild {
         }
       }
     }
-    Collections.sort(merchants);
+    Collections.sort(merchants); //Сортировка по доходу за прошедший год
   }
 
   public void printYearResults(){
+    //Вывод результатов за год
     for (int i = 0; i < merchants.size(); ++i) {
       System.out.println("Торговец №" + String.valueOf(i+1) + ", Стратегия: " + merchants.get(i).getBehaviour().getBehaviorName() + ", заработок: " +
           String.valueOf(merchants.get(i).getBalance()));
@@ -55,15 +56,28 @@ public class Guild {
 
   public static void main(String[] args){
     Guild guild = new Guild();
-    for(int i = 0; i < 5; ++i) {
+    Scanner reader = new Scanner(System.in);
+    System.out.print("Введите кол-во лет для симуляции: ");
+    int years = 0;
+    try {
+      years = reader.nextInt();
+    }
+    catch (InputMismatchException e){
+      System.out.println("Некорректное значение года, нажмите enter для завершения программы");
+      reader.nextLine();
+      reader.nextLine();
+      System.exit(1);
+    }
+    for(int i = 0; i < years; ++i) {
       guild.tradeYear();
       System.out.println("Год №" + String.valueOf(i+1));
       guild.printYearResults();
-      guild.reshuffle(14);
+      guild.reshuffle(merchants.size()/5); // 20% гильдии
     }
   }
 
   public void reshuffle(int num){
+    //Удаляет num худших торговцев и нбирает новых, повторяющих num лучших торговцев
     kickWorstMerchants(num);
     resetBalances();
     hireMerchants(num);

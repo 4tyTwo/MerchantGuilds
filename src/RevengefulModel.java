@@ -10,7 +10,7 @@ public class RevengefulModel extends BehaviorModel {
   @Override
   public int getDecision() {
     if (mistake())
-      return reverseDesicion(behavior);
+      return inverseDecision(behavior);
     return behavior;
   }
 

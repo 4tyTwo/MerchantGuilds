@@ -8,7 +8,7 @@ public class AltruistModel extends BehaviorModel {
   public int getDecision(){
     int decision = FAIR;
     if (mistake())
-      decision = reverseDesicion(decision);
+      decision = inverseDecision(decision);
     return decision;
   }
 

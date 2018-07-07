@@ -8,7 +8,7 @@ public class CheaterModel extends BehaviorModel {
   public int getDecision() {
     int decision = CHEAT;
     if (mistake())
-      decision = reverseDesicion(decision);
+      decision = inverseDecision(decision);
     return decision;
   }
 
