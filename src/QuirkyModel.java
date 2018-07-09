@@ -1,7 +1,7 @@
 public class QuirkyModel extends BehaviorModel {
   //Ушлый торговец
   //По истечении первых 4 сделок меняет свою модель поведения на новую
-  private static final int[] firstDecisions = {FAIR,CHEAT,FAIR,FAIR};
+  private static final int[] firstDecisions = {FAIR,CHEAT,FAIR,FAIR}; //Первичная последовательность решений
   private boolean gotCheated;
   private int currentDealNum;
   private BehaviorModel newBehaviour; //Новая модель поведения
