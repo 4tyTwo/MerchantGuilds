@@ -4,6 +4,7 @@ public class Guild {
   private static  ArrayList<Merchant> merchants;
 
   public Guild(){
+    //Инициализация массива, на 70 торговцев т.к. я добавил 10 торговцев своей стратегии поведения
     merchants = new ArrayList<>(70);
     for (int i = 0; i < 70; i++){
       if (i < 10)
