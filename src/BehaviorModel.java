@@ -19,7 +19,7 @@ public abstract class BehaviorModel {
   }
 
   protected int inverseDecision(int currentDecision){
-    //Инверсирует рещение в случае ошибок
+    //Инверсирует решение в случае ошибок
     //Домножение на -1 - это инверсия;
     return currentDecision * -1;
   }
